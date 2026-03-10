@@ -1,4 +1,4 @@
-# AutomationTestingPython
+# AutomationTestingPy
 
 Проект автоматизированного тестирования на Python, включающий:
 
