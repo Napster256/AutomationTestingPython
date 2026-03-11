@@ -1,5 +1,7 @@
 # AutomationTestingPy
 
+![AutomationTestingPy Preview](pythonCover.jpeg)
+
 Проект автоматизированного тестирования на Python, включающий:
 
 - API тестирование
@@ -21,6 +23,7 @@
 - `allure-pytest` — формирование отчётов
 
 Реализовано:
+
 - Проверка статус-кодов
 - Проверка структуры ответа
 - Валидация схемы JSON
@@ -39,32 +42,70 @@
 - `allure-pytest` — формирование отчётов
 
 Реализовано:
+
 - UI взаимодействия
 - Проверка пользовательских сценариев
 - Работа с элементами страницы
 - Интеграция с Allure Report
 - Применение Фикстуры в `conftest.py`
 
-## 🧊 Виртуальное окружение
+## 🔷 🛡️ 🟡 Виртуальное окружение
 
-Для обоих каталогов использовалось отдельное виртуальное окружение.
+В обоих каталогов для изоляции зависимостей используется отдельное виртуальное окружение.
 
-Пример создания окружения описан в [.gitignore](.gitignore) средствами комментариев.
+### 📦 🐧 Установка модуля venv (Linux)
 
-## 📥 Установка зависимостей проекта и Pip на linux
+```bash
+sudo apt install python3-venv
+```
+
+### 🧊 Создание виртуального окружения
+
+```bash
+python3 -m venv env
+```
+
+Виртуальное окружение также может быть создано автоматически средствами **Visual Studio Code.**
+
+### ⚡ Активация окружения
+
+#### 🐧 Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+#### 🪟 Windows
+
+```bash
+.venv\Scripts\activate || bat файл
+```
+
+### 🚫 Деактивация окружения
+
+```bash
+deactivate
+```
+
+Использование виртуального окружения позволяет изолировать зависимости проекта и избежать конфликтов между различными версиями библиотек.
+
+## 📥 Установка зависимостей проекта и pip на Linux
 
 ```bash
 sudo apt install build-essential
 python --version
 python3 --version
+whereis python
+whereis python3
 whereis pip
 whereis pip3
 which pip
 which pip3
+which python
+which python3
 sudo apt update
 sudo apt install python3-pip
 sudo pip3 install --upgrade pip
-sudo apt install python3-venv
 pip show
 pip list
 ```
@@ -73,22 +114,30 @@ pip list
 cd test_type_folder
 pip install -r static/libs.txt
 ```
+
 ## ⏩ Запуск тестов
+
 ### 🔌 API тесты
+
 ```bash
 cd apiTesting
 pytest
 ```
+
 ### 📸 E2E тесты
+
 ```bash
 cd e2eTesting
 pytest
 ```
+
 ## 📊 Генерация Allure отчёта в корневом каталоге родителя
+
 ```bash
 pytest --alluredir=coverage
 ./allure-2.35.1/bin/allure serve ./e2eTesting/coverage
 ```
+
 ## 🎯 Цель проекта
 
 - Демонстрация навыков автоматизации тестирования
@@ -111,4 +160,5 @@ pytest --alluredir=coverage
 - Логирование и кастомные хуки pytest
 
 ---
+
 © 2026 AutomationTestingPython. Все права защищены.

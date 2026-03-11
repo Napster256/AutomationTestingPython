@@ -1,10 +1,6 @@
-# sudo apt install python3-venv, python3 -m venv env, или средствами vscode
-# source .venv/bin/activate, deactivate или bat файл на Windows
-# установка библиотек pip install -r static/libs.txt
 env
 .venv
 .pytest_cache
 __pycache__
 coverage
-# ./allure-2.35.1/bin/allure serve ./e2eTesting/coverage
 allure-2.35.1
