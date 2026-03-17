@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def browser():
     """
     Fixture for setting up a browser instance for tests.
@@ -24,10 +24,11 @@ def browser():
 
     chrome_options = Options()
     chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("start-maximized")
+    chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-infobars")
     chrome_options.add_argument("--disable-extensions")
     service = Service(ChromeDriverManager().install())
     browser = webdriver.Chrome(service=service, options=chrome_options)
     yield browser
+    browser.delete_all_cookies()
     browser.quit()
