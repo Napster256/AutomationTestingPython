@@ -10,7 +10,7 @@ URL = "https://todomvc.com/examples/emberjs/todomvc/dist/"
 
 def load_tasks():
     current_dir = os.path.dirname(__file__)
-    project_root = os.path.join(current_dir, "../..")
+    project_root = os.path.join(current_dir, "../")
     static_dir = os.path.join(project_root, "static")
     file_path = os.path.join(static_dir, "tasks.json")
 

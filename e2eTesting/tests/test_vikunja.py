@@ -1,6 +1,6 @@
 import allure
-from pages.the_first_steps.main_vikunja import MainPage
-from pages.the_first_steps.register_vikunja import RegisterPage
+from pages.main_vikunja import MainPage
+from pages.register_vikunja import RegisterPage
 from utils.data_generator import generate_user
 
 
