@@ -61,11 +61,19 @@
    - Нажать **Submit**.
 2. **Ожидаемый результат:** Появляется alert с текстом `Message received!`.
 
+Результат Позитивного сценария обработки формы:
+
+![simbirsoft_allure_positive](e2eTesting/screenshots/simbirsoft_allure_positive.png)
+
 ##### Негативный сценарий: Отправка формы без email
 1. **Шаги:**
    - Заполнить все поля, кроме поля **Email**.
    - Нажать **Submit**.
 2. **Ожидаемый результат:** Alert **не появляется**, форма не отправляется, данные остаются в полях. Обработал данную Ситуацию через `page.verify_alert(should_be_present=False)` и `try:` В связке с `except NoAlertPresentException`
+
+Результат негативного случая после обработки в блоке `except NoAlertPresentException` , без обработки негативный тест упадет:
+
+![simbirsoft_allure_negative](e2eTesting/screenshots/simbirsoft_allure_negative.png)
 
 ## 🔷 🛡️ 🟡 Виртуальное окружение
 
