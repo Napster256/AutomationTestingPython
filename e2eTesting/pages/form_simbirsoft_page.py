@@ -3,7 +3,8 @@ from pytest import fail
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoAlertPresentException
-from pages.base_page import BasePage
+from .base_page import BasePage
+
 
 class FormPage(BasePage):
 
@@ -46,12 +47,13 @@ class FormPage(BasePage):
 
     @allure.step("Выбрать напитки: {drinks}")
     def select_drinks(self, drinks: list):
-      for drink in drinks:
-        locator = self.DRINKS[drink]
-        element = self.browser.find_element(*locator)
-        self.browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
-        self.click(locator)
-      return self
+        for drink in drinks:
+            locator = self.DRINKS[drink]
+            element = self.browser.find_element(*locator)
+            self.browser.execute_script(
+                "arguments[0].scrollIntoView({block: 'center'});", element)
+            self.click(locator)
+        return self
 
     @allure.step("Выбрать цвет: {color}")
     def select_color(self, color):
@@ -83,23 +85,25 @@ class FormPage(BasePage):
 
     @allure.step("Нажать Submit")
     def submit(self):
-      element = self.browser.find_element(*self.SUBMIT)
-      self.browser.execute_script("arguments[0].click();", element)
-      return self
-
+        element = self.browser.find_element(*self.SUBMIT)
+        self.browser.execute_script("arguments[0].click();", element)
+        return self
 
     @allure.step("Проверить алерт")
-    def verify_alert(self,should_be_present=True):
+    def verify_alert(self, should_be_present=True):
         try:
             alert = self.browser.switch_to.alert
             text = alert.text
-
-            allure.attach(text, name="Alert text", attachment_type=allure.attachment_type.TEXT)
+            if not should_be_present:
+                alert.accept()
+                fail(f"«Обнаружен дефект: форма отправлена с пустым полем Email. Получен алерт: '{text}'. Валидация срабатывает только при отсутствии Username»")
+            allure.attach(text, name="Alert text",
+                          attachment_type=allure.attachment_type.TEXT)
 
             assert text == "Message received!"
             alert.accept()
         except NoAlertPresentException:
-        # Если alert был нужен (True) — кидаем ошибку.
-        # Если alert отсутствует (False) — всё ок, тест прошел
+            # Если alert был нужен (True) — кидаем ошибку.
+            # Если alert отсутствует (False) — всё ок, тест прошел
             if should_be_present:
-              fail("Форма не была отправлена, (alert не появился)")
+                fail("Форма не была отправлена, (alert не появился)")

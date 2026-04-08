@@ -1,5 +1,5 @@
 import allure
-import pytest
+from pytest import mark
 from pages.form_simbirsoft_page import FormPage
 from utils.data_generator import generate_user
 
@@ -24,6 +24,7 @@ class TestForm:
             .verify_alert()
 
     @allure.title("Негативный тест: пустой email")
+    @mark.xfail(reason="Дефект: форма отправляется без email (валидация только на username)")
     def test_form_negative_empty_email(self, browser):
         user = generate_user()
         page = FormPage(browser)
