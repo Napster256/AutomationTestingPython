@@ -28,7 +28,7 @@ class FormPage(BasePage):
     MESSAGE = (By.ID, "message")
     SUBMIT = (By.ID, "submit-btn")
 
-    AUTOMATION_TOOLS = (By.XPATH, "//*[@id='feedbackForm']/ul/li")
+    AUTOMATION_TOOLS = (By.XPATH, "//form[@id='feedbackForm']/ul/li")
 
     @allure.step("Открыть страницу формы")
     def open_page(self):
