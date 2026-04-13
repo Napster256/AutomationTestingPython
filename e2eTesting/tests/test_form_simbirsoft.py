@@ -1,6 +1,6 @@
 import allure
 from pytest import mark
-from pages.form_simbirsoft_page import FormPage
+from pages.parameterize_form_simbirsoft_page import FormPage
 from utils.data_generator import generate_user
 
 
